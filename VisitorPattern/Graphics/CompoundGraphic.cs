@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VisitorPattern
+namespace VisitorPattern.Graphics
 {
     class CompoundGraphic : IGraphic
     {

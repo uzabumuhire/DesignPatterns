@@ -1,5 +1,7 @@
 ﻿using System;
 
+using VisitorPattern.Graphics;
+
 namespace VisitorPattern
 {
     class Program

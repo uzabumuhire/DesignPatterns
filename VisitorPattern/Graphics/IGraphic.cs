@@ -1,4 +1,4 @@
-﻿namespace VisitorPattern
+﻿namespace VisitorPattern.Graphics
 {
     interface IGraphic
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VisitorPattern
+namespace VisitorPattern.Graphics
 {
     // Visitor lets you add “external” operations to a whole class hierarchy
     // without changing the existing code of these classes.
