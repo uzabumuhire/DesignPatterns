@@ -1,6 +1,7 @@
 ﻿using System;
 
 using VisitorPattern.Graphics;
+using VisitorPattern.MathExpressions;
 
 namespace VisitorPattern
 {
