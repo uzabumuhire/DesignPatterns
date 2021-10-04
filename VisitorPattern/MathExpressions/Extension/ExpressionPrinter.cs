@@ -19,6 +19,10 @@
         }
         public static void Print(this Expression e, StringBuilder sb)
         {
+            // This has the same problem as the Reflexive approach, because by
+            // implementing an extension method on the root element of the hierarchy
+            // and perform type checks. There’s no verification to ensure that
+            // every inheritor of Expression is covered by the switch statement.
             switch (e)
             {
                 case DoubleExpression de:
