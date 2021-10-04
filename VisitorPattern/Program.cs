@@ -4,6 +4,7 @@
     using System.Text;
 
     using Intrusive = MathExpressions.Intrusive;
+    using Reflexive = MathExpressions.Reflexive;
 
     class Program
     {
@@ -22,6 +23,9 @@
 
             PrintInfo("Intrusive implementation of visitor pattern");
             PrintExpressionIntrusive();
+
+            PrintInfo("Reflexive implementation of visitor pattern");
+            PrintExpressionReflexive();
         }
 
         static void Draw(Graphics.IGraphic graphic)
@@ -60,6 +64,21 @@
             var sb = new StringBuilder();
 
             ae.Print(sb);
+
+            Console.WriteLine(sb);
+        }
+
+        static void PrintExpressionReflexive()
+        {
+            var ae = new Reflexive.AdditionExpression(
+                left: new Reflexive.DoubleExpression(1),
+                right: new Reflexive.AdditionExpression(
+                    left: new Reflexive.DoubleExpression(2),
+                    right: new Reflexive.DoubleExpression(3)));
+
+            var sb = new StringBuilder();
+
+            Reflexive.ExpressionPrinter.Print(ae, sb);
 
             Console.WriteLine(sb);
         }

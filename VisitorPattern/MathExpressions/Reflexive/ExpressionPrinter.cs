@@ -4,18 +4,19 @@
 
     public static class ExpressionPrinter
     {
-        public static void Print(DoubleExpression de, StringBuilder sb)
+        public static void Print(Expression e, StringBuilder sb)
         {
-            sb.Append(de.Value);
-        }
-
-        public static void Print(AdditionExpression ae, StringBuilder sb)
-        {
-            sb.Append("(");
-            Print(ae.Left, sb); // Does not compile : cannot convert Expression into DoubleExpression
-            sb.Append(" + "); 
-            Print(ae.Right, sb); // Does not compile : cannot convert Expression into DoubleExpression
-            sb.Append(")");
+            // Remove the overloads and check the type at runtime
+            if (e is DoubleExpression de)
+                sb.Append(de.Value);
+            else if (e is AdditionExpression ae)
+            {
+                sb.Append("(");
+                Print(ae.Left, sb);
+                sb.Append(" + ");
+                Print(ae.Right, sb);
+                sb.Append(")");
+            }
         }
     }
 }
