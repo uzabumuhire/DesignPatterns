@@ -16,6 +16,16 @@
 
         static ExpressionPrinter()
         {
+            // This approach has significant performance costs. There are ways to offset
+            // these costs, such as using Delegate.CreateDelegate() to avoid storing those
+            // MethodInfo objects and instead having ready-to-call delegates when the need
+            // arises.
+
+            // There is a possibility of generating code that creates those calls at runtime.
+            // Of course, this comes with its own set of problems: you’ll be generating code
+            // either on the basis of reflection  or by inspecting actual written code using
+            // a parser framework provided by Roslyn, ReSharper, Rider ...
+
             var assembly = typeof(Expression).Assembly;
 
             var classes = assembly.GetTypes()
