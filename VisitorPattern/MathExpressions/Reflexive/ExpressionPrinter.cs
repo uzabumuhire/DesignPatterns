@@ -14,7 +14,15 @@
             //    added types. Remember you might not have access to source code
             //    that contains the hierarchy.
             // 2. The is operator has a performance cost.
-                        if (e is DoubleExpression de)
+
+            // The is operator tests whether a reference conversion would succeed;
+            // in other words, whether an object derives from a specified class or
+            // implements an interface.
+
+            // You can introduce a variable that represents the converted type and 
+            // the introduced variable  remains in scope outside the is expression.
+
+            if (e is DoubleExpression de)
                 sb.Append(de.Value);
             else if (e is AdditionExpression ae)
             {
