@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace VisitorPattern.Graphics
+﻿namespace VisitorPattern.Graphics
 {
+    using System;
+
     class Exporter
     {
         public void Export(IGraphic graphic)

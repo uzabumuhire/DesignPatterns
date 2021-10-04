@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace VisitorPattern.Graphics
+﻿namespace VisitorPattern.Graphics
 {
+    using System;
+
     // Visitor lets you add “external” operations to a whole class hierarchy
     // without changing the existing code of these classes.
     class ExporterVisitor : IVisitor

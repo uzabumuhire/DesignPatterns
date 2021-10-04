@@ -18,7 +18,6 @@
             Export(new Graphics.Exporter(), new Graphics.CompoundGraphic()); // Does not work.
             Export(new Graphics.ExporterVisitor(), new Graphics.CompoundGraphic());
 
-
             PrintInfo("MATH EXPRESSIONS");
 
             PrintInfo("Intrusive implementation of visitor pattern");

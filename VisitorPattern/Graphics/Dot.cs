@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace VisitorPattern.Graphics
+﻿namespace VisitorPattern.Graphics
 {
+    using System;
+
     class Dot : Shape
     {
         protected int x, y;

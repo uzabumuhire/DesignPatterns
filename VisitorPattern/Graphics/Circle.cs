@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace VisitorPattern.Graphics
+﻿namespace VisitorPattern.Graphics
 {
+    using System;
+
     class Circle : Dot
     { 
         protected int radius;
