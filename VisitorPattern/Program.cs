@@ -1,23 +1,31 @@
-﻿using System;
-
-using VisitorPattern.Graphics;
-using VisitorPattern.MathExpressions;
-
-namespace VisitorPattern
+﻿namespace VisitorPattern
 {
+    using System;
+    using System.Text;
+
+    using Intrusive = MathExpressions.Intrusive;
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Drawing feature\n");
-            Draw(new CompoundGraphic());
+            PrintInfo("GRAPHICS");
 
-            Console.WriteLine("\nExporting feature\n");
-            Export(new Exporter(), new CompoundGraphic()); // Does not work.
-            Export(new ExporterVisitor(), new CompoundGraphic());
+            PrintInfo("Drawing feature");
+            Draw(new Graphics.CompoundGraphic());
+
+            PrintInfo("Exporting feature");
+            Export(new Graphics.Exporter(), new Graphics.CompoundGraphic()); // Does not work.
+            Export(new Graphics.ExporterVisitor(), new Graphics.CompoundGraphic());
+
+
+            PrintInfo("MATH EXPRESSIONS");
+
+            PrintInfo("Intrusive implementation of visitor pattern");
+            PrintExpressionIntrusive();
         }
 
-        static void Draw(IGraphic graphic)
+        static void Draw(Graphics.IGraphic graphic)
         {
             // Uses late (link object and its implementation after compilation at runtime)
             // or dynamic (every new object might be linked to a different implementation)
@@ -25,14 +33,14 @@ namespace VisitorPattern
             graphic.Draw();
         }
 
-        static void Export(Exporter exporter, IGraphic graphic) 
+        static void Export(Graphics.Exporter exporter, Graphics.IGraphic graphic) 
         {
             // Uses early (at compile time) or static (can't be altered at runtime)
             // binding for overloaden methods. Does not work.
             exporter.Export(graphic);
         }
 
-        static void Export(ExporterVisitor exporter, IGraphic graphic)
+        static void Export(Graphics.ExporterVisitor exporter, Graphics.IGraphic graphic)
         {
             // Uses double dispatch by allowing the dynamic binding alongside
             // with overloaded methods.
@@ -40,6 +48,26 @@ namespace VisitorPattern
             // dynamically. Therefore the `Accept` will be executed on a class that
             // corresponds to an object defined at runtime.
             graphic.Accept(exporter);
+        }
+
+        static void PrintExpressionIntrusive()
+        {
+            var ae = new Intrusive.AdditionExpression(
+                left: new Intrusive.DoubleExpression(1),
+                right: new Intrusive.AdditionExpression(
+                    left: new Intrusive.DoubleExpression(2),
+                    right: new Intrusive.DoubleExpression(3)));
+            
+            var sb = new StringBuilder();
+
+            ae.Print(sb);
+
+            Console.WriteLine(sb);
+        }
+
+        static void PrintInfo(string info)
+        {
+            Console.WriteLine($"\n{info}\n");
         }
     }
 }

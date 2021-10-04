@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace VisitorPattern.Graphics
+﻿namespace VisitorPattern.Graphics
 {
+    using System;
     class CompoundGraphic : IGraphic
     {
         internal IGraphic[] Graphics = new IGraphic[]
